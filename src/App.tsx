@@ -319,7 +319,7 @@ export default function App() {
   // System Settings Operations
   const handleSaveSystemName = async (name: string) => {
     try {
-      const res = await fetch('/api/app-config/name', {
+      const res = await fetch('/api/branding-name', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name })
@@ -345,7 +345,7 @@ export default function App() {
 
   const handleSaveSystemLogo = async (logoBase64: string) => {
     try {
-      const res = await fetch('/api/app-config/logo', {
+      const res = await fetch('/api/branding-logo', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ logo: logoBase64 })
@@ -371,7 +371,7 @@ export default function App() {
 
   const handleResetSystemLogo = async () => {
     try {
-      const res = await fetch('/api/app-config/logo', {
+      const res = await fetch('/api/branding-logo', {
         method: 'DELETE'
       });
       if (!res.ok) {
