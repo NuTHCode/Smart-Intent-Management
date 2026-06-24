@@ -1,6 +1,6 @@
 {
   "name": "Intent Matcher Pro",
-  "description": "ระบบจัดการข้อมูล Intent และ Stop Words เพื่อเตรียมชุดข้อมูลสำหรับการเทรนบอทของไปรษณีย์ไทย",
+  "description": "ระบบจัดการข้อมูล Intent และ Stop Words เพื่อเตรียมชุดข้อมูลสำหรับการเทรนบอท",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
