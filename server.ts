@@ -329,12 +329,12 @@ async function startServer() {
   });
 
   // API: System Logo Settings
-  app.get("/api/system/logo", (req, res) => {
+  app.get("/api/app-config/logo", (req, res) => {
     const db = readDb();
     res.json({ logo: db.system_logo });
   });
 
-  app.post("/api/system/logo", (req, res) => {
+  app.post("/api/app-config/logo", (req, res) => {
     const { logo } = req.body;
     const db = readDb();
     db.system_logo = logo || "";
@@ -342,7 +342,7 @@ async function startServer() {
     res.json({ success: true, message: "บันทึกโลโก้ระบบสำเร็จ!" });
   });
 
-  app.delete("/api/system/logo", (req, res) => {
+  app.delete("/api/app-config/logo", (req, res) => {
     const db = readDb();
     db.system_logo = "";
     writeDb(db);
@@ -350,12 +350,12 @@ async function startServer() {
   });
 
   // API: System Name Settings
-  app.get("/api/system/name", (req, res) => {
+  app.get("/api/app-config/name", (req, res) => {
     const db = readDb();
     res.json({ name: db.system_name });
   });
 
-  app.post("/api/system/name", (req, res) => {
+  app.post("/api/app-config/name", (req, res) => {
     const { name } = req.body;
     if (!name || name.trim() === "") {
       return res.status(400).json({ success: false, message: "กรุณากรอกชื่อระบบอย่างเหมาะสม" });

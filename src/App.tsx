@@ -319,11 +319,20 @@ export default function App() {
   // System Settings Operations
   const handleSaveSystemName = async (name: string) => {
     try {
-      const res = await fetch('/api/system/name', {
+      const res = await fetch('/api/app-config/name', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name })
       });
+      if (!res.ok) {
+        const text = await res.text();
+        return { success: false, message: `ไม่สามารถบันทึกชื่อได้ (รหัสข้อผิดพลาด: ${res.status}): ${text.substring(0, 100)}` };
+      }
+      const contentType = res.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await res.text();
+        return { success: false, message: `เซิร์ฟเวอร์ตอบกลับไม่ใช่ข้อมูล JSON: ${text.substring(0, 100)}` };
+      }
       const data = await res.json();
       if (data.success) {
         setSystemName(name);
@@ -336,11 +345,20 @@ export default function App() {
 
   const handleSaveSystemLogo = async (logoBase64: string) => {
     try {
-      const res = await fetch('/api/system/logo', {
+      const res = await fetch('/api/app-config/logo', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ logo: logoBase64 })
       });
+      if (!res.ok) {
+        const text = await res.text();
+        return { success: false, message: `ไม่สามารถบันทึกโลโก้ได้ (รหัสข้อผิดพลาด: ${res.status}): ${text.substring(0, 100)}` };
+      }
+      const contentType = res.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await res.text();
+        return { success: false, message: `เซิร์ฟเวอร์ตอบกลับไม่ใช่ข้อมูล JSON: ${text.substring(0, 100)}` };
+      }
       const data = await res.json();
       if (data.success) {
         setSystemLogo(logoBase64);
@@ -353,9 +371,18 @@ export default function App() {
 
   const handleResetSystemLogo = async () => {
     try {
-      const res = await fetch('/api/system/logo', {
+      const res = await fetch('/api/app-config/logo', {
         method: 'DELETE'
       });
+      if (!res.ok) {
+        const text = await res.text();
+        return { success: false, message: `ไม่สามารถรีเซ็ตโลโก้ได้ (รหัสข้อผิดพลาด: ${res.status}): ${text.substring(0, 100)}` };
+      }
+      const contentType = res.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await res.text();
+        return { success: false, message: `เซิร์ฟเวอร์ตอบกลับไม่ใช่ข้อมูล JSON: ${text.substring(0, 100)}` };
+      }
       const data = await res.json();
       if (data.success) {
         setSystemLogo('');

@@ -1,0 +1,90 @@
+{
+  "intents": [
+    {
+      "id": 1,
+      "name": "greeting",
+      "description": "คำทักทายทั่วไป เช่น สวัสดี ยินดีต้อนรับ"
+    },
+    {
+      "id": 2,
+      "name": "ask_price",
+      "description": "สอบถามราคาประเมิน ราคาสินค้า หรืออัตราค่าบริการ"
+    },
+    {
+      "id": 3,
+      "name": "check_status",
+      "description": "สอบถามสถานะพัสดุ หรือสถานะการจัดส่งสินค้า"
+    },
+    {
+      "id": 4,
+      "name": "complain_service",
+      "description": "ข้อร้องเรียน บริการล่าช้า พัสดุเสียหาย หรือไม่ประทับใจ"
+    },
+    {
+      "id": 5,
+      "name": "human_agent",
+      "description": "ต้องการคุยกับเจ้าหน้าที่ที่เป็นมนุษย์"
+    }
+  ],
+  "stopwords": [
+    {
+      "id": 1,
+      "pattern": "\\[TRACKING_ID\\]",
+      "type": "Regex",
+      "description": "รหัสพัสดุติดตามสถานะ"
+    },
+    {
+      "id": 2,
+      "pattern": "\\[ADDRESS\\]",
+      "type": "Regex",
+      "description": "ข้อมูลที่อยู่ลูกค้า"
+    },
+    {
+      "id": 3,
+      "pattern": "ค่ะ|คะ|ครับ|คับ",
+      "type": "Regex",
+      "description": "คำหางเสียงและคำฟุ่มเฟือยทั่วไป"
+    }
+  ],
+  "phrases": [
+    {
+      "intent": "greeting",
+      "phrase": "สวัสดีค่ะ รบกวนสอบถามนิดนึงค่ะ",
+      "cleanedPhrase": "รบกวนสอบถามนิดนึง",
+      "category": "ทั่วไป (Greeting)",
+      "topic": "ทักทายทั่วไป",
+      "createdAt": 1782319189981
+    }
+  ],
+  "system_logo": "",
+  "system_name": "Test System",
+  "analytics": {
+    "categories": [
+      {
+        "rank": 1,
+        "name": "ทั่วไป (Greeting)",
+        "count": 120,
+        "percentage": "45",
+        "savedAt": 1782319189981
+      },
+      {
+        "rank": 2,
+        "name": "ติดตามสถานะพัสดุ",
+        "count": 80,
+        "percentage": "30",
+        "savedAt": 1782319189981
+      }
+    ],
+    "insights": [
+      {
+        "rank": 1,
+        "phrase": "เช็คพัสดุ TH123456789TH",
+        "cleanedPhrase": "เช็คพัสดุ",
+        "category": "ติดตามสถานะพัสดุ",
+        "topic": "ตามพัสดุ",
+        "frequency": 25,
+        "analyzedAt": 1782319189981
+      }
+    ]
+  }
+}
